@@ -1,0 +1,117 @@
+main {
+  padding-top: 36px;
+  padding-left: 156px;
+  font-family: 'Montserrat', sans-serif;
+}
+input {
+  outline: transparent;
+  margin-right: 8px;
+  border: 2px solid #808080;
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  transition: background cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+}
+input:hover {
+  border-color: #000000;
+}
+input:active {
+  border-color: #4e75ff;
+}
+input:disabled {
+  border-color: #808080;
+}
+button {
+  border-radius: 8px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  width: 75px;
+  height: 40px;
+  border-color: transparent;
+  background: #4e75ff;
+  color: #ffffff;
+  transition: background cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+}
+button:hover {
+  background: #6c8cff;
+}
+button:disabled {
+  background: #cfcfcf;
+  color: #989898;
+}
+.timer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.value {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2e2f42;
+}
+.error-window{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 24px;
+}
+.error-container {
+  display: flex;
+  width: 302px;
+  height: 64px;
+  background-color: #ef4040;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.error-warning {
+  margin-left: 8px;
+  margin-right: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+.error-information {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 2.18182;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+.close-error {
+  cursor: pointer;
+  position: absolute;
+  color: #ffffff;
+  top: 0;
+  right: 8px;
+}
+.error-window {
+    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+    opacity: 0;
+    pointer-events: none;
+    
+}
+.error-window.open {
+    opacity: 1;
+    pointer-events: all;
+}
