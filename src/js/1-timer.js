@@ -3,7 +3,7 @@ import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
 let userSelectedDate;
-let autoCloseErrorTimeOutId
+let autoCloseErrorTimeOutId;
 const refs = {
   spanSecondsElem: document.querySelector('span[data-seconds]'),
   spanMinutesElem: document.querySelector('span[data-minutes]'),
@@ -11,7 +11,7 @@ const refs = {
   spanDaysElem: document.querySelector('span[data-days]'),
   startBtnElem: document.querySelector('button[data-start]'),
   errorElement: document.querySelector('.js-error'),
-  closeErrorElem: document.querySelector('.close-error')
+  closeErrorElem: document.querySelector('.close-error'),
 };
 const config = {
   enableTime: true,
@@ -39,7 +39,7 @@ function checkDate(userPickedDate) {
   }
 }
 refs.startBtnElem.addEventListener('click', () => {
-  if(checkDate(userSelectedDate) === 'error'){
+  if (checkDate(userSelectedDate) === 'error') {
     return;
   }
   const timerId = setInterval(() => {
@@ -53,9 +53,9 @@ refs.startBtnElem.addEventListener('click', () => {
     refs.spanSecondsElem.textContent = msToDate.seconds
       .toString()
       .padStart(2, '0');
-      if(userSelectedDate - timerData < 1000){
-        clearInterval(timerId)
-      }
+    if (userSelectedDate - timerData < 1000) {
+      clearInterval(timerId);
+    }
   }, 1000);
 });
 
@@ -77,7 +77,7 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-refs.closeErrorElem.addEventListener('click',() => {
-    refs.errorElement.classList.remove('open')
-    clearTimeout(autoCloseErrorTimeOutId)
-})
+refs.closeErrorElem.addEventListener('click', () => {
+  refs.errorElement.classList.remove('open');
+  clearTimeout(autoCloseErrorTimeOutId);
+});
