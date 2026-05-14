@@ -57,6 +57,7 @@ refs.startBtnElem.addEventListener('click', () => {
     return;
   }
   refs.datePickerElem.disabled = true;
+  refs.startBtnElem.disabled = true;
   const timerId = setInterval(() => {
     const timerData = new Date();
     const msToDate = convertMs(userSelectedDate - timerData);
@@ -72,6 +73,11 @@ refs.startBtnElem.addEventListener('click', () => {
       refs.startBtnElem.disabled = true;
       refs.datePickerElem.disabled = false;
       clearInterval(timerId);
+      refs.spanDaysElem.textContent = '00'
+      refs.spanHoursElem.textContent = '00'
+      refs.spanHoursElem.textContent = '00'
+      refs.spanMinutesElem.textContent = '00'
+      refs.spanSecondsElem.textContent = '00'
     }
   }, 1000);
 });
