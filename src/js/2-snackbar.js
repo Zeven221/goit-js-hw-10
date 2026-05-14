@@ -18,30 +18,30 @@ function createPromise(userData) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {
-        resolve(`✅ Fulfilled promise in ${userData.delay}ms`);
+        resolve(userData.delay);
       } else {
-        reject(`❌ Rejected promise in ${userData.delay}ms`);
+        reject(userData.delay);
       }
     }, userData.delay);
   });
 
   promise
-    .then(value => {
+    .then(delay => {
       iziToast.show({
         close: false,
         messageColor: '#FFFFFF',
-        message: value,
+        message: `✅ Fulfilled promise in ${delay}ms`,
         position: 'topRight',
         progressBar: true,
         progressBarColor: '#326101',
         color: '#59A10D',
       });
     })
-    .catch(error => {
+    .catch(delay => {
       iziToast.show({
         close: false,
         messageColor: '#FFFFFF',
-        message: error,
+        message: `❌ Rejected promise in ${delay}ms`,
         position: 'topRight',
         progressBar: true,
         progressBarColor: 'rgb(181, 27, 27)',

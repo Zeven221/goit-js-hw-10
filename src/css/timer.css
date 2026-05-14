@@ -12,7 +12,7 @@ input {
   height: 40px;
   padding-left: 16px;
   padding-right: 16px;
-  transition: background cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+  transition: border-color cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
 }
 input:hover {
   border-color: #000000;
@@ -65,52 +65,4 @@ button:disabled {
   line-height: 1.5;
   color: #2e2f42;
 }
-.error-window{
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 24px;
-}
-.error-container {
-  display: flex;
-  width: 302px;
-  height: 64px;
-  background-color: #ef4040;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.error-warning {
-  margin-right: 8px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.03em;
-  color: #fff;
-}
-.error-information {
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 2.18182;
-  letter-spacing: 0.05em;
-  color: #fff;
-}
-.close-error {
-  cursor: pointer;
-  position: absolute;
-  color: #ffffff;
-  top: 0;
-  right: 8px;
-}
-.error-window {
-    transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
-    opacity: 0;
-    pointer-events: none;
-    
-}
-.error-window.open {
-    opacity: 1;
-    pointer-events: all;
-}
+

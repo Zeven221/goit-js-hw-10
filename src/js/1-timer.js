@@ -2,6 +2,14 @@
 import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
+// Описаний у документації
+import iziToast from 'izitoast';
+// Додатковий імпорт стилів
+import 'izitoast/dist/css/iziToast.min.css';
+
+document.addEventListener('DOMContentLoaded', () => {
+  refs.startBtnElem.disabled = true;
+});
 let userSelectedDate;
 let autoCloseErrorTimeOutId;
 const refs = {
@@ -12,6 +20,7 @@ const refs = {
   startBtnElem: document.querySelector('button[data-start]'),
   errorElement: document.querySelector('.js-error'),
   closeErrorElem: document.querySelector('.close-error'),
+  datePickerElem: document.querySelector('#datetime-picker'),
 };
 const config = {
   enableTime: true,
@@ -30,10 +39,15 @@ function checkDate(userPickedDate) {
     userSelectedDate = userPickedDate;
     refs.startBtnElem.disabled = false;
   } else {
-    refs.errorElement.classList.add('open');
-    autoCloseErrorTimeOutId = setTimeout(() => {
-      refs.errorElement.classList.remove('open');
-    }, 6000);
+    iziToast.show({
+      close: false,
+      messageColor: '#FFFFFF',
+      message: `Please choose a date in the future`,
+      position: 'topRight',
+      progressBar: true,
+      progressBarColor: 'rgb(181, 27, 27)',
+      color: '#EF4040',
+    });
     refs.startBtnElem.disabled = true;
     return 'error';
   }
@@ -42,6 +56,7 @@ refs.startBtnElem.addEventListener('click', () => {
   if (checkDate(userSelectedDate) === 'error') {
     return;
   }
+  refs.datePickerElem.disabled = true;
   const timerId = setInterval(() => {
     const timerData = new Date();
     const msToDate = convertMs(userSelectedDate - timerData);
@@ -54,6 +69,8 @@ refs.startBtnElem.addEventListener('click', () => {
       .toString()
       .padStart(2, '0');
     if (userSelectedDate - timerData < 1000) {
+      refs.startBtnElem.disabled = true;
+      refs.datePickerElem.disabled = false;
       clearInterval(timerId);
     }
   }, 1000);
